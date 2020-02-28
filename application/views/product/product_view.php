@@ -15,7 +15,7 @@
         }
         .seach{
             width: 200px;
-            margin: 50px auto
+            margin :-90px 0px -46px 895px
         }
         .menu ul{
             margin:0x;
@@ -38,7 +38,18 @@
 </head>
  
 <body>
-    <div class="seach">
+    <div class="container">
+    <div class="alert">
+        <?php
+        if (isset($_SESSION['msg'])) { ?>
+            <div class="alert alert-success" style="margin-top: -112px" role="alert">
+                <?php echo $_SESSION['msg'] ?>
+            </div>
+        <?php
+        }
+        ?>
+        </div>
+        <div class="seach">
         <form class="navbar-form navbar-left" action="search" method="post">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" name="search">
@@ -50,7 +61,6 @@
             </div>
         </form>
     </div>
-    <div class="container">
         <div class="menu">
         <ul>
         <?php foreach ($cate as $key) { ?>
@@ -58,14 +68,6 @@
         <?php } ?>
         </ul>
         </div>
-        <?php
-        if (isset($_SESSION['msg'])) { ?>
-            <div class="alert alert-success" style="margin-bottom: 15px" role="alert">
-                <?php echo $_SESSION['msg'] ?>
-            </div>
-        <?php
-        }
-        ?>
         <table class="table table-hover">
             <thead>
                 <tr>
