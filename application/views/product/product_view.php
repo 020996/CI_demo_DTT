@@ -13,60 +13,102 @@
         .container {
             margin: 100px auto
         }
-        .seach{
-            width: 200px;
-            margin :-90px 0px -46px 895px
-        }
-        .menu ul{
-            margin:0x;
+
+        .menu ul {
+            margin: 0x;
             padding: 0px;
             list-style: none;
         }
-        .menu ul li{
+
+        .menu ul li {
             list-style: none;
             float: left;
             margin: 0px 25px 20px 15px
         }
-        .menu ul li a{
+
+        .menu ul li a {
             text-decoration: none;
             color: blueviolet;
         }
-        .menu ul li a:hover{
+
+        .menu ul li a:hover {
             color: red;
+        }
+
+        .locsp {
+            margin: 20px 0px 0px 20px;
+        }
+
+        .locsp select {
+            height: 38px;
         }
     </style>
 </head>
- 
+
 <body>
     <div class="container">
-    <div class="alert">
-        <?php
-        if (isset($_SESSION['msg'])) { ?>
-            <div class="alert alert-success" style="margin-top: -112px" role="alert">
-                <?php echo $_SESSION['msg'] ?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: -40px">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand"> Duyệt sản phẩm </a>
+                <form action="Filterproduct" method="post">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <div class="locsp">
+                            <li class="nav-item">
+                                <div class="form-group">
+                                    <label>Sản phẩm :</label>
+                                    <select name="product_cate">
+                                        <?php foreach ($cate as $key) { ?>
+                                            <option value="<?php echo $key['cate_id'] ?>"><?php echo $key['cate_name']  ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="locsp">
+                            <li class="nav-item">
+                                <div class="form-group">
+                                    <label>Giá sản phẩm :</label>
+                                    <select class="browser-default custom-select" name="product_price">
+                                        <option value="1">Trên 10 triệu</option>
+                                        <option value="2">Từ 10 - 6 triệu </option>
+                                        <option value="3">Từ 6 - 4 triệu </option>
+                                        <option value="4">Dưới 4 triệu</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="locsp">
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                            </li>
+                        </div>
+                    </ul>
+                </form>
+                <form action="search" method="post" class="form-inline my-2 my-lg-0" style="margin-left: 120px">
+                    <input class="form-control mr-sm-2" name="search" type="search" required placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
-        <?php
-        }
-        ?>
-        </div>
-        <div class="seach">
-        <form class="navbar-form navbar-left" action="search" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="search">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
+        </nav>
+        <div class="alert">
+            <?php
+            if (isset($_SESSION['msg'])) { ?>
+                <div class="alert alert-success" style="margin-top: -160px" role="alert">
+                    <?php echo $_SESSION['msg'] ?>
                 </div>
-            </div>
-        </form>
-    </div>
+            <?php
+            }
+            ?>
+        </div>
         <div class="menu">
-        <ul>
-        <?php foreach ($cate as $key) { ?>
-            <li><a href="getCatebyid/<?php echo $key['cate_id'] ?>"><?php echo $key['cate_name'] ?><a></li>
-        <?php } ?>
-        </ul>
+            <ul>
+                <?php foreach ($cate as $key) { ?>
+                    <li><a href="getCatebyid/<?php echo $key['cate_id'] ?>"><?php echo $key['cate_name'] ?><a></li>
+                <?php } ?>
+            </ul>
         </div>
         <table class="table table-hover">
             <thead>
@@ -88,8 +130,7 @@
                         <td><?php echo $i; ?></td>
                         <td><?php echo $key['product_name'] ?></td>
                         <td><?php echo $key['cate_name'] ?></td>
-                        <td><?php echo $key['product_price']  ?>đ</td>
-                        
+                        <td><?php echo $key['product_price'] ?>đ</td>
                         <td><img style="width:100px" src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>"></td>
                         <td><?php echo $key['product_des'] ?></td>
                         <td><?php echo $key['created_at'] ?></td>
@@ -104,4 +145,4 @@
         </table>
         <a href="<?php echo base_url() ?>index.php/home/logout" style="margin-left: 15px">Logout</a>
         <a href="<?php echo base_url() ?>index.php/product_controller/thongke" style="margin-left: 30px">Thống kê</a>
-    </div> 
+    </div>

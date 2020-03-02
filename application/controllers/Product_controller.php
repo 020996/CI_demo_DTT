@@ -94,4 +94,10 @@ class Product_controller extends CI_Controller
        $cate['product'] = $this->Product_model->getCatebyid($id);
        $this->load->view('product/product_cate',$cate);
     }
+    public function Filterproduct(){
+      $id = $this->input->post('product_cate');
+      $price = $this->input->post('product_price');
+      $product['product'] = $this->Product_model->Filterproduct( $id,$price);
+      $this->load->view('product/Filterproduct',$product);
+    }
 }

@@ -76,4 +76,38 @@ class Product_model extends CI_Model
         return $cate;
 
     }
+    public function Filterproduct($id ,$price){
+        switch ($price) {
+            case '1':
+                 $batdau = 10000000;
+                 $ketthuc = 100000000;
+                break;
+            case '2':
+                $batdau = 6000000;
+                 $ketthuc = 10000000;
+            break;
+            case '3':
+                $batdau = 4000000;
+                $ketthuc = 6000000;
+            break;
+            case '4':
+                $batdau = 0;
+                $ketthuc = 4000000;
+            default:
+                break;
+        }
+        $this->db->where('product_cate', $id);
+         $this->db->where('product_price >=', $batdau);
+        $this->db->where('product_price <=', $ketthuc);
+        $product =$this->db->get('product')->result_array();
+        // $sql ="SELECT * FROM product WHERE product_cate = $id AND product_price >=$batdau AND product_price <= $ketthuc";
+        // $query = $this->db->query($sql);
+        // if($query->num_rows()>0){
+        //     $data = $query->result_array();
+        // } else{
+        //     $data = '';
+        // }
+        return $product;
+
+    }
 }
