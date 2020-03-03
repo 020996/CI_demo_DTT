@@ -62,7 +62,7 @@ class Product_model extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
-    public function seachthongke($batdau,$ketthuc)
+    public function seachthongke($batdau, $ketthuc)
     {
         $this->db->where('updated_at >=', $batdau);
         $this->db->where('updated_at <=', $ketthuc);
@@ -70,26 +70,27 @@ class Product_model extends CI_Model
         $data = $this->db->get('product')->result_array();
         return $data;
     }
-    public function getCatebyid($id){
-        $this->db->where('product_cate',$id);
-        $cate =$this->db->get('product')->result_array();
+    public function getCatebyid($id)
+    {
+        $this->db->where('product_cate', $id);
+        $cate = $this->db->get('product')->result_array();
         return $cate;
-
     }
-    public function Filterproduct($id ,$price){
+    public function Filterproduct($id, $price)
+    {
         switch ($price) {
             case '1':
-                 $batdau = 10000000;
-                 $ketthuc = 100000000;
+                $batdau = 10000000;
+                $ketthuc = 100000000;
                 break;
             case '2':
                 $batdau = 6000000;
-                 $ketthuc = 10000000;
-            break;
+                $ketthuc = 10000000;
+                break;
             case '3':
                 $batdau = 4000000;
                 $ketthuc = 6000000;
-            break;
+                break;
             case '4':
                 $batdau = 0;
                 $ketthuc = 4000000;
@@ -97,9 +98,9 @@ class Product_model extends CI_Model
                 break;
         }
         $this->db->where('product_cate', $id);
-         $this->db->where('product_price >=', $batdau);
+        $this->db->where('product_price >=', $batdau);
         $this->db->where('product_price <=', $ketthuc);
-        $product =$this->db->get('product')->result_array();
+        $product = $this->db->get('product')->result_array();
         // $sql ="SELECT * FROM product WHERE product_cate = $id AND product_price >=$batdau AND product_price <= $ketthuc";
         // $query = $this->db->query($sql);
         // if($query->num_rows()>0){
@@ -108,6 +109,25 @@ class Product_model extends CI_Model
         //     $data = '';
         // }
         return $product;
-
+    }
+    public function getdetailProduct($cate_id, $id)
+    {   
+        // $sql ="SELECT * FROM product WHERE  product_cate = $cate_id AND NOT product_id=$id;"
+        $this->db->where('product_cate', $cate_id);
+        $this->db->where_not_in('product_id', $id);
+        $this->db->limit(2);
+        $data = $this->db->get('product')->result_array();
+        return $data;
+    }
+    public function getKhac($cate_id){
+        $this->db->where_not_in('product_cate', $cate_id);
+        $this->db->limit(2);
+        $data = $this->db->get('product')->result_array();
+        return $data;
+    }
+    public function catebyid($id){
+        $this->db->where('cate_id',$id);
+        $data = $this->db->get('category')->result_array();
+        return $data;
     }
 }

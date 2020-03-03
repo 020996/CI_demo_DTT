@@ -17,12 +17,12 @@ class Product_controller extends CI_Controller
     {
         $data['info'] = $this->Product_model->getProduct();
         $data['cate'] = $this->Product_model->getCate();
-        $this->load->view('product/product_view', $data);
+        $this->load->view('backend/product/product_view', $data);
     }
     public function addproduct()
     {
         $cate['cate'] = $this->Product_model->getCate();
-        $this->load->view('product/add_product', $cate);
+        $this->load->view('backend/product/add_product', $cate);
     }
     public function isertaddproduct()
     {
@@ -54,7 +54,7 @@ class Product_controller extends CI_Controller
     {
         $data['cate'] = $this->Product_model->getCate();
         $data['product'] = $this->Product_model->getProductbyid($id);
-        $this->load->view('product/edit_product', $data);
+        $this->load->view('backend/product/edit_product', $data);
     }
     public function update_product()
     {
@@ -78,26 +78,26 @@ class Product_controller extends CI_Controller
     {
         $search = $this->input->post('search');
         $data['search'] = $this->Product_model->Search($search);
-        $this->load->view('product/seach', $data);
+        $this->load->view('backend/product/seach', $data);
     }
     public function thongke()
     {
-        $this->load->view('product/thongke');
+        $this->load->view('backend/product/thongke');
     }
     public function seachthongke(){
         $batdau = $this->input->post('batdau');
         $ketthuc = $this->input->post('ketthuc');
         $ketqua['data'] = $this->Product_model->seachthongke($batdau,$ketthuc);
-        $this->load->view('product/ketquathongke',$ketqua);
+        $this->load->view('backend/product/ketquathongke',$ketqua);
     }
     public function getCatebyid($id){
        $cate['product'] = $this->Product_model->getCatebyid($id);
-       $this->load->view('product/product_cate',$cate);
+       $this->load->view('backend/product/product_cate',$cate);
     }
     public function Filterproduct(){
       $id = $this->input->post('product_cate');
       $price = $this->input->post('product_price');
       $product['product'] = $this->Product_model->Filterproduct( $id,$price);
-      $this->load->view('product/Filterproduct',$product);
+      $this->load->view('backend/product/Filterproduct',$product);
     }
 }

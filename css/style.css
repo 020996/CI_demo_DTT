@@ -1,0 +1,134 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wapper {
+    width: auto;
+    height: auto;
+    border: 1px solid #000;
+}
+
+.header {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #000;
+}
+
+.header img {
+    width: 100%;
+    height: 300px;
+}
+
+.menu {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #000;
+}
+
+.menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.menu ul li {
+    float: left;
+    margin-left: 160px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    width: 20px;
+    line-height: 30px;
+}
+
+.menu ul li a:hover {
+    background-color: rebeccapurple;
+    color: white;
+}
+
+.content {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #000;
+    clear: both;
+}
+
+.content .left {
+    width: 20%;
+    height: 500px;
+    border: 1px solid #000;
+    float: left;
+}
+
+.content .left h3 {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background-color: blueviolet;
+    line-height: 50px;
+}
+
+.content .left ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.content .left ul li {
+    border: 1px solid;
+    width: 100%;
+    margin-top: 20px;  
+}
+.content .left ul li:hover{
+    background-color: green;
+}
+.content .left ul li a{
+    margin: 20px 0px 15px 70px;
+    text-decoration: none;
+}
+
+.content .right {
+    width: 79%;
+    height: 500px;
+    border: 1px solid #000;
+    float: right;
+}
+
+.content .right h3 {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background-color: blueviolet;
+    line-height: 50px;
+}
+.content .right .sanpham{
+    margin-top: 20px;
+}
+.content .right .sanpham ul {
+    list-style: none;
+
+}
+.content .right .sanpham li{
+    float: left;
+    margin: 20px 0px 0px 55px;
+}
+.content .right .sanpham li a{
+    text-decoration: none;
+}
+.content .right .sanpham li a p{
+    text-align: center;
+    margin: 0px 0px 0px -13px;
+}
+.footer {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #000;
+    clear: both;
+}
+.footer h3{
+    text-align: center;
+    line-height: 80px;
+    color: darkgreen;
+}

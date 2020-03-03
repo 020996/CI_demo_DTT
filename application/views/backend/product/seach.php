@@ -37,7 +37,7 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $key['product_name'] ?></td>
             <td><?php echo $key['cate_name'] ?></td>
-            <td><?php echo $key['product_price'] ?>đ</td>
+            <td><?php echo number_format("$key[product_price]",0,",",".") ?> VNĐ</td>
             <td><img style="width:100px" src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>"></td>
             <td><?php echo $key['product_des'] ?></td>
             <td><?php echo $key['updated_at'] ?></td>

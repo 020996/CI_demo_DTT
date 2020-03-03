@@ -14,7 +14,7 @@ class Home extends CI_Controller
 
 	public function login()
 	{
-		$this->load->view('home/login');
+		$this->load->view('backend/home/login');
 	}
 	public function check(){
 		// lấy giữ liệu từ form;
@@ -27,7 +27,7 @@ class Home extends CI_Controller
 	public function registration()
 	{
 
-		$this->load->view('home/registration');
+		$this->load->view('backend/home/registration');
 		$name = $this->input->post('name');
 		$email = $this->input->post('mail');
 		$level = $this->input->post('level');
@@ -43,7 +43,7 @@ class Home extends CI_Controller
 	public function user(){
 		if($this->session->userdata('admin')){
 			$data['info'] = $this->Uers_model->getUesrs();
-			$this->load->view('home/user',$data);
+			$this->load->view('backend/home/user',$data);
 		   }else{
 			   redirect('index.php/home/login');
 		   }
