@@ -1,0 +1,54 @@
+
+.menu ul {
+    margin-top: 40px;
+    padding: 0px;
+    list-style: none;
+}
+.menudrop{
+    background-color: #f8f9fa;
+    border-top: 1px solid gray;
+}
+.menu ul li {
+    list-style: none;
+    float: left;
+    padding: 10px 0px 15px 20px;
+    width: 100%;
+}
+.menu ul li:hover{
+    background-color: grey;
+}
+.menu ul li a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+.menu ul li a:hover {
+    color: white;
+}
+.menu ul li.xanh{
+    background-color: green;
+}
+.locsp {
+    margin: 20px 0px 0px 30px
+}
+
+.locsp select {
+    height: 38px;
+    background-size: 8px 10px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+ul.pagination.phantrang {
+    margin-left: 400px
+}
+
+ul.pagination.phantrang li {
+    border: 1px solid;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin: 3px;
+}
+.table.table.table-hover{
+    margin-left: -16px;
+}

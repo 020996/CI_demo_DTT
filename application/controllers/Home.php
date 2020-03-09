@@ -6,6 +6,7 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Product_model');
 		$this->load->model('Uers_model');
 		$this->load->helper('url');
 		$this->load->library('session');
@@ -39,14 +40,6 @@ class Home extends CI_Controller
 			$this->session->set_flashdata('msg', 'Bạn đã đăng ký thành công');
 			redirect('index.php/home/login');
 		}
-	}
-	public function user(){
-		if($this->session->userdata('admin')){
-			$data['info'] = $this->Uers_model->getUesrs();
-			$this->load->view('backend/home/user',$data);
-		   }else{
-			   redirect('index.php/home/login');
-		   }
 	}
 	public function logout(){
 		if($this->session->userdata('admin')){

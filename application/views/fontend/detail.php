@@ -4,8 +4,15 @@
         <div class="col-md-4">
             <?php foreach ($detail as $key) { ?>
                 <h4 style="text-align: center"><?php echo $key['product_name'] ?></h4>
+
                 <img src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>" width="200" height="200" style="margin: 20px 0px 0px 35px;">
-                <button style="margin: 55px;" type="button" class="btn btn-success">Đặt mua sản phẩm</button>
+                <form action="shoppingcart/shopping" method="post">
+                <input type="hidden" name="id" value="<?php echo $key['product_id'] ?>">
+                <button style="margin: 40px 0px 0px 66px;" type="submit" class="btn btn-danger" value="submit">Đặt hàng online</button>
+                </form>
+
+                <!-- <a href="shoppingcart/shopping/<?php echo $key['product_id'] ?>" type="submit" class="btn btn-danger" value="submit">Đặt hàng online</a> -->
+
         </div>
         <div class="col-md-4" style="padding-top: 70px">
             <p style="color: red">Giá sản phẩm : <?php echo number_format("$key[product_price]", 0, ",", ".") ?> VNĐ</p>
@@ -20,7 +27,7 @@
             <ul>
                 <?php foreach ($product as $key) { ?>
                     <li>
-                    <a href="fontend/detail/<?php echo $key['product_cate'] ?>/<?php echo $key['product_id'] ?>">
+                        <a href="fontend/detail/<?php echo $key['product_cate'] ?>/<?php echo $key['product_id'] ?>">
                             <img src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>" width="50" height="50">
                             <?php echo $key['product_name'] ?>
                         </a>
@@ -33,7 +40,7 @@
             <ul>
                 <?php foreach ($khac as $key) { ?>
                     <li>
-                    <a href="fontend/detail/<?php echo $key['product_cate'] ?>/<?php echo $key['product_id'] ?>">
+                        <a href="fontend/detail/<?php echo $key['product_cate'] ?>/<?php echo $key['product_id'] ?>">
                             <img src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>" width="50" height="50">
                             <?php echo $key['product_name'] ?>
                         </a>

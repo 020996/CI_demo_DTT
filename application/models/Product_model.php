@@ -6,12 +6,16 @@ class Product_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
-    public function getProduct()
+    public function getProduct($a,$b)
     {
-        $this->db->join('category', 'category.cate_id = product.product_cate', 'left');
+        $this->db->join('category', 'category.cate_id = product.product_cate', 'left')->limit($a,$b);
         $data = $this->db->get('product')->result_array();
 
         return $data;
+    }
+    public function countProduct()
+    {
+        return $this->db->count_all('product');
     }
     public function getCate()
     {
@@ -32,8 +36,8 @@ class Product_model extends CI_Model
     }
     public function delete_product($id)
     {
-        $this->db->where('product_id', $id);
-        $this->db->delete('product');
+         $this->db->where('product_id', $id);
+         $this->db->delete('product');
     }
     public function getProductbyid($id)
     {
@@ -111,7 +115,7 @@ class Product_model extends CI_Model
         return $product;
     }
     public function getdetailProduct($cate_id, $id)
-    {   
+    {
         // $sql ="SELECT * FROM product WHERE  product_cate = $cate_id AND NOT product_id=$id;"
         $this->db->where('product_cate', $cate_id);
         $this->db->where_not_in('product_id', $id);
@@ -119,14 +123,16 @@ class Product_model extends CI_Model
         $data = $this->db->get('product')->result_array();
         return $data;
     }
-    public function getKhac($cate_id){
+    public function getKhac($cate_id)
+    {
         $this->db->where_not_in('product_cate', $cate_id);
         $this->db->limit(2);
         $data = $this->db->get('product')->result_array();
         return $data;
     }
-    public function catebyid($id){
-        $this->db->where('cate_id',$id);
+    public function catebyid($id)
+    {
+        $this->db->where('cate_id', $id);
         $data = $this->db->get('category')->result_array();
         return $data;
     }

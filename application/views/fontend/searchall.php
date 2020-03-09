@@ -1,12 +1,10 @@
-<?php foreach ($catebyid as $key) { ?>
-    <h3>Sản phẩm của : <?php echo $key['cate_name'] ?></h3>
-<?php } ?>
+<h3>Kết quả tìm kiếm   </h3>
 <div class="sanpham">
     <ul>
         <?php
-        if (count($product) > 0) {
+        if (count($search) > 0) {
         ?>
-            <?php foreach ($product as $key) { ?>
+            <?php foreach ($search as $key) { ?>
                 <li>
                     <a href="fontend/detail/<?php echo $key['product_cate'] ?>/<?php echo $key['product_id'] ?>"><img src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>" width="100" height="100">
                         <p><?php echo $key['product_name'] ?></p>
@@ -16,7 +14,7 @@
                 </li>
             <?php } ?>
         <?php } else { ?>
-            <p style="text-align: center"> Danh mục không có sản phẩm nào.</p>
+            <p style="text-align: center"> Không tìm thấy sản phẩm bạn cần tìm.</p>
         <?php } ?>
     </ul>
 </div>

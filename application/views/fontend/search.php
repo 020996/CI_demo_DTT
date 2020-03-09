@@ -1,6 +1,4 @@
-<?php foreach ($catebyid as $key) { ?>
-    <h3>Sản phẩm của : <?php echo $key['cate_name'] ?></h3>
-<?php } ?>
+    <h3>Kết quả tìm kiếm   </h3>
 <div class="sanpham">
     <ul>
         <?php
@@ -16,7 +14,7 @@
                 </li>
             <?php } ?>
         <?php } else { ?>
-            <p style="text-align: center"> Danh mục không có sản phẩm nào.</p>
+            <p style="text-align: center"> Không tìm thấy sản phẩm bạn cần tìm.</p>
         <?php } ?>
     </ul>
 </div>

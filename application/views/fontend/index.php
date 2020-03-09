@@ -1,4 +1,4 @@
-<h3>Tất cả sản phẩm</h3>
+<h3>Tất cả sản phẩm</h3> 
 <div class="sanpham">
     <ul>
         <?php foreach ($product as $key) { ?>
@@ -12,3 +12,6 @@
         <?php } ?>
     </ul>
 </div>
+<?php echo $pagination ?>
+
+
