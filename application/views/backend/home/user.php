@@ -23,7 +23,7 @@
                     } else {
                         echo 'Người dùng';
                     } ?></td>
-                <td><a href="delete_user/<?php echo $val['id'] ?>">Xóa</td>
+                <td><a href="<?php echo base_url() ?>index.php/home/delete_user/<?php echo $val['id'] ?>">Xóa</td>
             </tr>
             <?php $i++ ?>
         <?php  } ?>

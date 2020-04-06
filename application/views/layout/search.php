@@ -3,8 +3,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a href="fontend/index" class="navbar-brand" style="border-radius: 10px;">Trang chủ</a>
-                <form action="fontend/search" method="post">
+                <a href="index.php/fontend/index" class="navbar-brand" style="border-radius: 10px;">Trang chủ</a>
+                <form action="index.php/fontend/search" method="post">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <div class="locsp">
                             <li class="nav-item">
@@ -38,7 +38,7 @@
                         </div>
                     </ul>
                 </form>
-                <form action="fontend/searchall" method="post" class="form-inline my-2 my-lg-0" style="margin-left: 170px">
+                <form action="index.php/fontend/searchall" method="post" class="form-inline my-2 my-lg-0" style="margin-left: 170px">
                     <input class="form-control mr-sm-2" name="search" type="search" required placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                 </form>

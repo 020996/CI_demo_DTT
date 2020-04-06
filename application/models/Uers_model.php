@@ -32,7 +32,7 @@ class Uers_model extends CI_Model
 		$result = $this->check_pass($query, $password);
 		if(!empty($result)){
 		$this->session->set_userdata('admin', $email);
-		    redirect('index.php/product_controller/addproduct');
+		    redirect('index.php/product_controller/index');
 		}else{
 		   $this->session->set_flashdata('msg', 'Bạn đã nhập sai email hoặc mật khẩu');
 		   redirect('index.php/home/login');
@@ -62,6 +62,6 @@ class Uers_model extends CI_Model
 	public function delete_user($id){
 	  $this->db->where('id',$id);
 	  $this->db->delete('users');
-	  redirect('index.php/home/user');
+	  redirect('index.php/product_controller/getuser');
 	}
 }

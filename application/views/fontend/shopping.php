@@ -11,7 +11,7 @@
         // 	   }
         //    });
         $.get(
-            '<?php echo base_url() ?>/shoppingcart/ajax', {
+            '<?php echo base_url() ?>index.php/shoppingcart/ajax', {
                 id: id,
                 soluong: quantity
             },
@@ -36,6 +36,14 @@
         )
     }
 </script>
+<?php
+       if (isset($_SESSION['msg'])) { ?>
+            <div class="alert alert-success" style="margin-bottom: -40px" role="alert">
+                <?php echo $_SESSION['msg'] ?>
+            </div>
+        <?php
+        }
+        ?>
 <?php
 if (empty($_SESSION['cart'])) { ?>
     <p>Giỏ hàng của bạn rỗng</p>
@@ -65,31 +73,31 @@ if (empty($_SESSION['cart'])) { ?>
                     <td><?php echo number_format("$key[price]", 0, ",", ".") ?> VNĐ</td>
                     <!-- <td id="thanhtien<?php echo $key['id'] ?> "><?php echo $key['soluong'] * $key['price'] ?> VNĐ</td> -->
                     <td><div id="thanhtien<?php echo $key['id'] ?>"><?php echo $key['soluong'] * $key['price'] ?> đ</div></td>
-                    <td><a href="shoppingcart/remove/<?php echo $key['id'] ?>">Xóa</a></td>
+                    <td><a href="<?php echo base_url() ?>index.php/shoppingcart/remove/<?php echo $key['id'] ?>">Xóa</a></td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    <a href="shoppingcart/deletecart" class="btn btn-danger" style="margin: 0px 0px -38px 710px;">Xóa giỏ hàng</a>
-    <div><b>Tổng hóa đơn : <p class="tonghoadon"><?php echo number_format("$sobital", 0, ",", ".") ?>đ</p></b></div>
+    <a href="<?php echo base_url() ?>index.php/shoppingcart/deletecart" class="btn btn-danger" style="margin: 0px 0px -38px 710px;">Xóa giỏ hàng</a>
+    <div style="padding-left: 20px"><b>Tổng hóa đơn : <p class="tonghoadon"><?php echo number_format("$sobital", 0, ",", ".") ?>đ</p></b></div>
     <div id="xac-nhan" style="margin: 0px auto; width:600px">
         <h3>Xác nhận mua hàng</h3>
-        <form method="POST">
+        <form method="POST" action="index.php/shoppingcart/checkout">
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input required type="email" class="form-control" id="email" name="email">
+                <input required type="email" class="form-control" name="email">
             </div>
             <div class="form-group">
                 <label for="name">Họ và tên:</label>
-                <input required type="text" class="form-control" id="name" name="name">
+                <input required type="text" class="form-control"  name="name">
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại:</label>
-                <input required type="number" class="form-control" id="phone" name="phone">
+                <input required type="number" class="form-control"  name="phone">
             </div>
             <div class="form-group">
-                <label for="add">Địa chỉ:</label>
-                <input required type="text" class="form-control" id="add" name="add">
+                <label for="dress">Địa chỉ:</label>
+                <input required type="text" class="form-control" name="dress">
             </div>
             <div class="form-group text-right">
                 <button type="submit" class="btn btn-default">Thực hiện đơn hàng</button>

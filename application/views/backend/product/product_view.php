@@ -23,9 +23,9 @@
                 <td><img style="width:100px" src="<?php echo base_url() ?>/upload/<?php echo $key['product_image'] ?>"></td>
                 <td><?php echo $key['product_des'] ?></td>
                 <td><?php echo $key['created_at'] ?></td>
-                <td><a href="<?php echo base_url() ?>product_controller/addproduct">Thêm</a></td>
-                <td><a href="<?php echo base_url() ?>product_controller/edit_product/<?php echo $key['product_id'] ?>">Sửa</a></td>
-                <td><a href="<?php echo base_url() ?>product_controller/delete_product/<?php echo $key['product_id'] ?>">Xóa</a></td>
+                <td><a href="<?php echo base_url() ?>index.php/product_controller/addproduct">Thêm</a></td>
+                <td><a href="<?php echo base_url() ?>index.php/product_controller/edit_product/<?php echo $key['product_id'] ?>">Sửa</a></td>
+                <td><a href="<?php echo base_url() ?>index.php/product_controller/delete_product/<?php echo $key['product_id'] ?>">Xóa</a></td>
             </tr>
         <?php
         } ?>

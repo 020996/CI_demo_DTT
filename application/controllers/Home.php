@@ -12,7 +12,6 @@ class Home extends CI_Controller
 		$this->load->library('session');
 		$this->load->library('bcrypt');
 	}
-
 	public function login()
 	{
 		$this->load->view('backend/home/login');

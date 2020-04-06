@@ -7,6 +7,7 @@ class shoppingcart extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Product_model');
+		$this->load->model('Detail_model');
 		$this->load->helper('url');
 		$this->load->library('session');
 	}
@@ -58,7 +59,7 @@ class shoppingcart extends CI_Controller
 		if ($_SESSION['cart'][$id]) {
 			unset($_SESSION['cart'][$id]);
 		}
-		redirect('shoppingcart/giohangremove');
+		redirect('index.php/shoppingcart/giohangremove');
 	}
 	public function giohangremove()
 	{
@@ -77,7 +78,7 @@ class shoppingcart extends CI_Controller
 	{
 		if ($this->session->userdata('cart')) {
 			$this->session->unset_userdata('cart'); //hủy secsition,
-			redirect('shoppingcart/giohang');
+			redirect('index.php/shoppingcart/giohang');
 		}
 	}
 	public function ajax(){
@@ -109,4 +110,27 @@ class shoppingcart extends CI_Controller
 		
         echo json_encode($data);
 	}
+	public function checkout(){
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$dress = $this->input->post('dress');
+		$cart = $this->session->userdata('cart');
+		$day = date('Y-m-d', time());
+		$detail_id = $this->Detail_model->checkout($name,$email,$phone,$dress);
+		foreach ($cart as $key) {
+			$product_id = $key['id'];
+			$qty = $key['soluong'];
+			$price = $key['price'];
+			$tong = $qty*$price;
+			$level = 1;
+			$this->Detail_model->thanhtoan($detail_id,$product_id,$qty,$price,$tong,$day,$level);
+		}
+		if ($this->session->userdata('cart')) {
+			$this->session->unset_userdata('cart'); //hủy secsition,
+			redirect('index.php/shoppingcart/giohang');
+			$this->session->set_flashdata('msg', 'Bạn đã đặt sản phẩm thành công');
+		}
+	}
+
 }
